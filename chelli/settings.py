@@ -26,8 +26,9 @@ SECRET_KEY = 'django-insecure-27-z1kmoq0#$u4+%=48o4(7b_w+qnn1#5&7h7o)k+*nbv+#isw
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    '.chelli.com',
-    '.челли.рф',
+    'localhost',
+    '127.0.0.1',
+    '147.45.169.77',
 ]
 
 
