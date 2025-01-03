@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 8000
 
 # Команда запуска Gunicorn
-CMD ["gunicorn", "--bind", "147.45.169.77:8000", "chelli.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "chelli.wsgi:application"]
