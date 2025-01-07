@@ -38,7 +38,7 @@ ALLOWED_HOSTS = [
     'chelli.ru',
     'www.chelli.ru',
     'челли.рф',
-    '.челли.рф'
+    'xn--e1agia1d.xn--p1ai',
 ]
 
 
