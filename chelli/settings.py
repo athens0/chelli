@@ -36,7 +36,6 @@ DEBUG = False
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    '147.45.169.77',
     'chelli.ru',
     'www.chelli.ru',
     'челли.рф',
