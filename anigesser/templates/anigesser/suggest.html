@@ -1,0 +1,32 @@
+{% extends "anigesser/layout.html" %}
+
+{% block title %}Предложить тайтл{% endblock %}
+
+{% block content %}
+<div class="container text-center">
+    <h1 class="mb-4">
+        Предложить тайтл
+    </h1>
+    {% if success == True %}
+        <div class="alert alert-success mb-4 mx-auto w-fit-content">Ваше предложение успешно отправлено! Оно будет рассмотрено в ближайшее время.</div>
+    {% endif %}
+    {% if success == False %}
+        <div class="alert alert-danger mb-4 mx-auto w-fit-content">Неудалось отправить предложение, попробуйте позже.</div>
+    {% endif %}
+    <form method="POST" action="{% url 'anigesser:suggest' %}" class="container">
+        {% csrf_token %}
+        <div class="mb-3">
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon3">Ссылка на тайтл</span>
+                <input type="url" name="title_url" class="form-control input-pink" maxlength="300" id="basic-url" aria-describedby="basic-addon3 basic-addon4" required>
+            </div>
+            <div class="form-text" id="basic-addon4">MAL или Shikimori</div>
+        </div>
+        <div class="input-group">
+            <span class="input-group-text">Дополнительно</span>
+            <textarea name="extra_info" class="form-control input-pink" maxlength="500" aria-label="With textarea"></textarea>
+        </div>
+        <input class="btn btn-pink mt-4" type="submit" value="Отправить">
+    </form>
+</div>
+{% endblock %}

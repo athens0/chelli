@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'anigesser',
 ]
 
 MIDDLEWARE = [
@@ -141,3 +142,20 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# login_required url path
+LOGIN_URL = '/login/'
+
+# email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'info@chelli.ru'
+EMAIL_HOST_PASSWORD = ''
+with open(BASE_DIR / 'email_host_password.txt') as f:
+    SECRET_KEY = f.read().strip()
+DEFAULT_FROM_EMAIL = 'info@chelli.ru'
+
+# ...
+AUTHENTICATION_BACKENDS = ["chelli.backends.EmailBackend"]

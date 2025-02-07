@@ -1,0 +1,41 @@
+{% extends "anigesser/layout.html" %}
+
+{% block title %}Анигессер{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% if title %}
+    <div class="d-flex flex-wrap">
+        <img src="{{ title.image_url }}" alt="poster" class="img-thumbnail me-4" style="max-height: 60vh;">
+        <div class="">
+            <h2 class="mb-3">{{ title.original_name }}</h2>
+            <p><span class="text-secondary">Источник:</span> {{ title.source }}</p>
+            <p><span class="text-secondary">Тип:</span> {{ title.title_type }}</p>
+            <p><span class="text-secondary">В эфире:</span> {{ title.release_date }}</p>
+            <p><span class="text-secondary">Рейтинг:</span> {{ title.rating }}</p>
+            <p><span class="text-secondary">Популярность:</span> {{ title.members }}</p>
+            <p><span class="text-secondary">Студия:</span>
+                {% for i in title.studios %}
+                    <span class="me-2">{{ i }}</span>
+                {% endfor %}
+            </p>
+            <p><span class="text-secondary">Жанры:</span>
+                {% for i in title.genres %}
+                    <span class="me-2">{{ i }}</span>
+                {% endfor %}
+            </p>
+            <p><span class="text-secondary">Темы:</span>
+                {% for i in title.themes %}
+                    <span class="me-2">{{ i }}</span>
+                {% endfor %}
+            </p>
+            <p>{{ title.description }}</p>
+        </div>
+    </div>
+    {% else %}
+    <h1>
+        Тайтл не найден
+    </h1>
+    {% endif %}
+</div>
+{% endblock %}

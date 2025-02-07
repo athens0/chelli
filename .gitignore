@@ -5,3 +5,5 @@ db.sqlite3
 staticfiles/
 
 secret_key.txt
+
+email_host_password.txt

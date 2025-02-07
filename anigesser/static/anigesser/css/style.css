@@ -1,0 +1,98 @@
+:root {
+    --pink: rgb(255, 93, 115);
+    --pink-dark: #4c1c22;
+    --pink-sub: #b34151;
+    --pink-light: #ff7d8f;
+    --input-border-focus-pink: rgba(255, 93, 115, 0.3);
+}
+
+header {
+    border-bottom: solid 1px var(--pink);
+}
+
+footer {
+    border-top: solid 1px var(--pink);
+}
+
+.text-pink {
+    color: var(--pink);
+}
+
+.link-pink {
+    color: var(--pink);
+
+    &:hover,
+    &:focus {
+        color: var(--pink-light);
+    }
+}
+
+.link-pink-nohover {
+    color: var(--pink);
+
+    &:hover,
+    &:focus {
+        color: var(--pink);
+    }
+}
+
+.link-discord {
+    color: #7289da;
+}
+
+.link-telegram {
+    color: #64b5ef;
+}
+
+.link-default {
+    color: var(--bs-body-color);
+}
+
+.link-default:hover {
+    color: var(--bs-emphasis-color);
+}
+
+.min-height-4rem {
+    min-height: 4rem;
+}
+
+.input-pink {
+    &:focus {
+        border-color: var(--pink-light);
+        box-shadow: 0 0 0 4px var(--input-border-focus-pink);
+    }
+}
+
+input.btn.btn-pink {
+    color: var(--pink);
+    border: solid 1px var(--pink);
+
+    &:hover, &:active {
+        background-color: var(--pink);
+        color: var(--pink-dark);
+    }
+}
+
+button.btn.btn-pink {
+    color: var(--pink);
+    border: solid 1px var(--pink);
+
+    &:hover, &:active {
+        background-color: var(--pink);
+        color: var(--pink-dark);
+    }
+}
+
+.bg-pink-subtle {
+    background-color: var(--pink-dark);
+    color: var(--pink);
+}
+
+.bg-pink{
+    background-color: var(--pink);
+    color: var(--pink-light);
+}
+
+.w-fit-content {
+    width: fit-content;
+}

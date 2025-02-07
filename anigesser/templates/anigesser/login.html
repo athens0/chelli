@@ -1,0 +1,27 @@
+{% extends "anigesser/layout.html" %}
+
+{% block title %}Анигессер{% endblock %}
+
+{% block content %}
+<div class="container text-center">
+    <h1 class="mb-4">
+        Вход
+    </h1>
+    {% if error %}
+        <div class="alert alert-danger mb-4 mx-auto w-fit-content">{{ error }}</div>
+    {% endif %}
+    <form method="POST" action="{% url 'anigesser:login' %}">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="email-addon">Эл. почта</span>
+            <input type="email" name="email" class="form-control input-pink" maxlength="150" aria-describedby="email-addon" required>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="password-addon1">Пароль</span>
+            <input type="password" name="password" class="form-control input-pink" minlength="8" maxlength="150" aria-describedby="password-addon1" required>
+        </div>
+        <input class="btn btn-pink mt-3" type="submit" value="Войти">
+    </form>
+    <p class="mt-1">Нет аккаунта? <a class="link-pink text-decoration-none" href="{% url 'anigesser:register' %}">Регистрация</a></p>
+</div>
+{% endblock %}

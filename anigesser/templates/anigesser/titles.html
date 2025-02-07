@@ -1,0 +1,75 @@
+{% extends "anigesser/layout.html" %}
+
+{% block title %}База тайтлов{% endblock %}
+
+{% block content %}
+<div class="container text-center">
+    <h1 class="mb-4">
+        Список всех тайтлов
+    </h1>
+    <div class="container">
+        <div class="row border-bottom">
+            <p class="col text-secondary">Популярность</p>
+            <p class="col text-secondary">Название</p>
+            <p class="col text-secondary">Студии</p>
+            <p class="col text-secondary">Источник</p>
+            <p class="col text-secondary">Тип</p>
+            <p class="col text-secondary">Дата релиза</p>
+            <p class="col text-secondary">Рейтинг</p>
+        </div>
+        {% for i in titles %}
+        <div class="row border-bottom justify-content-center align-items-center py-2 min-height-4rem">
+            <span class="col"> {{ i.1.members }} </span>
+            <a href="{% url 'anigesser:title' i.1.id %}" class="col link-pink text-decoration-none"> {{ i.1.original_name }} </a>
+            <div class="col">
+                {% for i in i.1.studios %}
+                <span>{{ i }}</span> <br>
+                {% endfor %}
+            </div>
+            <span class="col"> {{ i.1.source }} </span>
+            <span class="col"> {{ i.1.title_type }} </span>
+            <span class="col"> {{ i.1.release_date }} </span>
+            <span class="col"> {{ i.1.rating }} </span>
+        </div>
+        {% endfor %}
+        <p class="text-secondary mt-2">
+            {% if results %}
+            Результаты {{results.0}}-{{results.1}} из {{results.2}}
+            {% else %}
+            Результатов нет
+            {% endif %}
+        </p>
+    </div>
+    {% if results %}
+    <div class="d-flex justify-content-center">
+        {% if prev_page %}
+        <a href="{% url 'anigesser:titles' prev_page %}" class="link-default text-decoration-none">Пред.</a>
+        {% endif %}
+        <div class="mx-2">
+            {% if first_page %}
+                <a href="{% url 'anigesser:titles' first_page %}" class="link-default text-decoration-none">{{ first_page }}</a>
+                {% if first_page_skip %}
+                <span>...</span>
+                {% endif %}
+            {% endif %}
+            {% if prev_page %}
+            <a href="{% url 'anigesser:titles' prev_page %}" class="link-default text-decoration-none">{{ prev_page }}</a>
+            {% endif %}
+            <a href="" class="link-pink-nohover link-offset-1">{{ page }}</a>
+            {% if next_page %}
+            <a href="{% url 'anigesser:titles' next_page %}" class="link-default text-decoration-none">{{ next_page }}</a>
+            {% endif %}
+            {% if last_page %}
+                {% if last_page_skip %}
+                <span>...</span>
+                {% endif %}
+                <a href="{% url 'anigesser:titles' last_page %}" class="link-default text-decoration-none">{{ last_page }}</a>
+            {% endif %}
+        </div>
+        {% if next_page %}
+        <a href="{% url 'anigesser:titles' next_page %}" class="link-default text-decoration-none">След.</a>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
