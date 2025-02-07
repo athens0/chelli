@@ -154,7 +154,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'info@chelli.ru'
 EMAIL_HOST_PASSWORD = ''
 with open(BASE_DIR / 'email_host_password.txt') as f:
-    SECRET_KEY = f.read().strip()
+    EMAIL_HOST_PASSWORD = f.read().strip()
 DEFAULT_FROM_EMAIL = 'info@chelli.ru'
 
 # ...
