@@ -130,7 +130,7 @@ def verify(request):
             request.session["attempts"] = attempts - 1
             return render(request, "verify_code.html", {"error": f"Неверный код! Осталось попыток: {attempts - 1}"})
 
-    return redirect('anigesser:home')
+    return render(request, "verify_code.html")
 
 
 def login_view(request):
