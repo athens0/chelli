@@ -3,7 +3,7 @@ import time
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from .models import Title, Suggestion
 
 
@@ -123,8 +123,8 @@ def verify(request):
 
         if str(entered_code) == str(saved_code):
             user = User.objects.create_user(username=username, email=email, password=password)
-            login(request, user)
             request.session.flush()
+            login(request, user)
             return redirect('anigesser:home')
         else:
             request.session["attempts"] = attempts - 1
@@ -150,6 +150,12 @@ def login_view(request):
             data["error"] = "Неверная почта или пароль!"
 
     return render(request, 'anigesser/login.html', data)
+
+
+def exit(request):
+    if request.user.is_authenticated:
+        logout(request)
+    return redirect('anigesser:home')
 
 
 def about(request):
